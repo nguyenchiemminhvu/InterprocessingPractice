@@ -15,7 +15,7 @@ int main()
     fl.l_len = 0;
     fl.l_pid = getpid();
 
-    int fd = open(SAMPLE_FILE, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+    int fd = open(SAMPLE_FILE, O_RDWR | O_APPEND | O_CREAT, S_IRUSR | S_IWUSR);
     if (fd == -1)
     {
         printf("Failed to open sample file\n");
@@ -29,7 +29,7 @@ int main()
         exit(-1);
     }
 
-    char * buffer = "In the beginning God created the heaven and the earth";
+    char * buffer = "In the beginning God created the heaven and the earth\n";
     rc = write(fd, buffer, strlen(buffer));
     sleep(5);
     if (rc == -1)
