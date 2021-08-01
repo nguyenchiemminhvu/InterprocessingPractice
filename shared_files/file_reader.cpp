@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <fcntl.h>
 
+#define SAMPLE_FILE "sample_file"
+
 int main()
 {
     
