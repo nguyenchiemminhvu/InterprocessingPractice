@@ -8,6 +8,7 @@
 
 int main()
 {
+    fork();
     struct flock fl;
     fl.l_type = F_WRLCK; // lock write action on file
     fl.l_whence = SEEK_SET;
@@ -29,9 +30,11 @@ int main()
         exit(-1);
     }
 
+    sleep(5);
+
     char * buffer = "In the beginning God created the heaven and the earth\n";
     rc = write(fd, buffer, strlen(buffer));
-    sleep(5);
+    
     if (rc == -1)
     {
         printf("Failed to write data to sample file\n");
